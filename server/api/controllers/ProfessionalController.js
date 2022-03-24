@@ -1,37 +1,28 @@
-import ExamplesService from '../services/examples.service';
-
+import ProfessionalService from '../services/professionalService';
 class ProfessionalController {
-  constructor() {
-    this.professionalService = ProfessionalService;
+  constructor() {}
+
+  // eslint-disable-next-line no-unused-vars
+  async list(_, res) {
+    const data = await new ProfessionalService().list();
+    return res.json(data);
   }
 
-  async list() {
-    return await this.professionalService.list();
-  }
-
-  async getOne(id) {
-    const professional = await this.professionalService.getOne(id);
+  async getOne(req, res) {
+    const id = req.params.id;
+    const professional = await new ProfessionalService().getOne(id);
 
     if (!professional) {
       throw 'Usuário não encontrado!';
     }
 
-    return professional;
+    return res.json(professional);
   }
+  async create(req, res) {
+    const body = req.body;
+    const data = await new ProfessionalService().create(body);
 
-  async create(data) {
-    const professional = await this.professionalService.create(data);
-    return professional;
-  }
-
-  async update(id, data) {
-    const professional = await this.professionalService.update(id, data);
-    return professional;
-  }
-
-  async delete(id) {
-    await this.professionalService.delete(id);
-    return;
+    return res.json(data);
   }
 }
 
