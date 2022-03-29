@@ -18,11 +18,23 @@ class ProfessionalController {
 
     return res.json(professional);
   }
+
   async create(req, res) {
     const body = req.body;
     const data = await new ProfessionalService().create(body);
 
     return res.json(data);
+  }
+  async update(req, res) {
+    const body = req.body;
+    const data = await new ProfessionalService().update(body);
+
+    return res.json(data);
+  }
+
+  async delete(id) {
+    await this.professionalService.delete(id);
+    return;
   }
 }
 
