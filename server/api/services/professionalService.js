@@ -1,11 +1,15 @@
+import models from '../models';
+import ProfessionalTypeService from './professionalTypeService.js';
+
 export default class ProfessionalService {
-  constructor(req) {
-    this.req = req;
+  constructor() {
+    this.professional = models.Professional;
+    this.professionalTypeService = ProfessionalTypeService;
   }
 
   async list() {
     try {
-      // Alguma coisa deve vir aqui. Mas oq ?
+      return await this.professional.findAll();
     } catch (error) {
       console.log(error);
       return error;
