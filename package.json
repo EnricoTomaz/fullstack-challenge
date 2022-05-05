@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "fullstack-challenge",
   "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "start": "npm run compile && node dist/index.js",
     "compile": "babel server --out-dir dist --delete-dir-on-start --source-maps inline --copy-files",
