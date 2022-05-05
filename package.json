@@ -2,7 +2,7 @@
   "name": "myapp",
   "version": "1.0.0",
   "description": "fullstack-challenge",
-  "main": "index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": "12.x"
   },
@@ -15,7 +15,7 @@
     "test:debug": "mocha --require @babel/register --inspect-brk --exit",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "heroku-postbuild": "npm run start"
+    "heroku-postbuild": "npm run compile"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
