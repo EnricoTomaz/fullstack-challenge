@@ -17,10 +17,19 @@ const Professional = database.define(
     professionalTypeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'professional_type_id',
     },
     situation: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+    },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATEONLY,
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATEONLY,
     },
   },
   {

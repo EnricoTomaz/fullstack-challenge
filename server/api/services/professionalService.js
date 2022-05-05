@@ -18,7 +18,7 @@ export default class ProfessionalService {
 
   async getOne(id) {
     try {
-      return { id: id };
+      return this.professional.findByPk(id);
     } catch (error) {
       console.log(error);
       return error;
@@ -26,7 +26,7 @@ export default class ProfessionalService {
   }
 
   async create(data) {
-    return data;
+    return this.professional.create(data);
   }
   async update(data) {
     return data;
