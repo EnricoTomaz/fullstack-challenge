@@ -1,5 +1,5 @@
 import * as express from 'express';
-import ProfessionalController from './controllers/professionalController';
+import ProfessionalController from './controllers/ProfessionalController';
 
 export default express
   .Router()
