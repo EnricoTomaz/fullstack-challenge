@@ -20,10 +20,14 @@ class ProfessionalController {
   }
 
   async create(req, res) {
-    const body = req.body;
-    const data = await new ProfessionalService().create(body);
-
-    return res.json(data);
+    // added docstring
+    try {
+      const body = req.body;
+      const data = await new ProfessionalService().create(body);
+      return res.json(data);
+    } catch (error) {
+      return res.json(error);
+    }
   }
   async update(req, res) {
     const body = req.body;
