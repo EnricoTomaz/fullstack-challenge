@@ -28,8 +28,8 @@ export default class ProfessionalService {
   async create(data) {
     return this.professional.create(data);
   }
-  async update(data) {
-    return data;
+  async update(id) {
+    return this.professional.update(id);
   }
   async delete(data) {
     return data;
