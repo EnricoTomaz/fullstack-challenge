@@ -5,8 +5,8 @@ info:
   description: fullstack-challenge
 basePath: /api/v1
 tags:
-  - name: Examples
-    description: Simple example endpoints
+  - name: Professionals
+    description: Simple professional endpoints
   - name: Specification
     description: The swagger API specification
 
@@ -18,7 +18,7 @@ produces:
 definitions:
   ExampleBody:
     type: object
-    title: example
+    title: professional
     required:
       - name
     properties:
@@ -30,19 +30,42 @@ paths:
   /:
     get:
       tags:
-        - Examples
+        - Professionals
       description: Fetch all examples
       responses:
         200:
           description: Returns all examples
     post:
       tags:
-        - Examples
-      description: Create a new example
+        - Professionals
+      description: Create a new professional
       parameters:
-        - name: example
+        - name: professional
           in: body
-          description: an example
+          description: an professional
+          required: true
+          schema:
+            $ref: '#/definitions/ExampleBody'
+      responses:
+        200:
+          description: Returns all examples
+
+  /professional_type:
+    get:
+      tags:
+        - Professionals type
+      description: Fetch all examples
+      responses:
+        200:
+          description: Returns all examples
+    post:
+      tags:
+        - Professionals
+      description: Create a new professional
+      parameters:
+        - name: professional
+          in: body
+          description: an professional
           required: true
           schema:
             $ref: '#/definitions/ExampleBody'
@@ -53,16 +76,100 @@ paths:
   /{id}:
     get:
       tags:
-        - Examples
+        - Professionals
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the example to retrieve
+          description: The id of the professional to retrieve
           type: integer
       responses:
         200:
-          description: Return the example with the specified id
+          description: Return the professional with the specified id
+        404:
+          description: Example not found
+    put:
+      tags:
+        - Professionals
+      parameters:
+        - name: professional
+          in: body
+          description: an professional
+          required: true
+          schema:
+            $ref: '#/definitions/ExampleBody'
+        - name: id
+          in: path
+          required: true
+          description: The id of the professional to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the professional with the specified id
+        404:
+          description: Example not found
+    delete:
+      tags:
+        - Professionals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the professional to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the professional with the specified id
+        404:
+          description: Example not found
+
+  /professional_type/{id}:
+    get:
+      tags:
+        - Professionals type
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the professional to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the professional with the specified id
+        404:
+          description: Example not found
+    put:
+      tags:
+        - Professionals
+      parameters:
+        - name: professional
+          in: body
+          description: an professional
+          required: true
+          schema:
+            $ref: '#/definitions/ExampleBody'
+        - name: id
+          in: path
+          required: true
+          description: The id of the professional to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the professional with the specified id
+        404:
+          description: Example not found
+    delete:
+      tags:
+        - Professionals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the professional to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the professional with the specified id
         404:
           description: Example not found
 

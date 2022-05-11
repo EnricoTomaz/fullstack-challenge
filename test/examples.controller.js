@@ -2,8 +2,10 @@ import request from 'supertest';
 import Server from '../server';
 
 describe('Api Testing', () => {
-  it('creating professional', async () => {
-    await request(Server)
+  let profId = '';
+
+  before(function (done) {
+    request(Server)
       .post('/api/v1/')
       .send({
         name: 'Dante poet',
@@ -12,10 +14,14 @@ describe('Api Testing', () => {
         phone: 77777,
         email: 'email@mail.com',
       })
-      .expect(200);
+      .end(function (err, res) {
+        console.log(res.body);
+        profId = res.body.user.parentMember.id;
+        done();
+      });
   });
 
   it('geting a professional', async () => {
-    await request(Server).get('/api/v1/17').expect(200);
+    await request(Server).get('/api/v1/17').expect(200).done();
   });
 });

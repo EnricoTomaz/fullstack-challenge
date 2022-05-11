@@ -5,8 +5,9 @@ class ProfessionalTypeController {
     this.professionalTypeService = ProfessionalTypeService;
   }
 
-  async list() {
-    return await this.professionalTypeService.list();
+  async list(_, res) {
+    const data = await new ProfessionalTypeService().list();
+    return res.json(data);
   }
 
   async getOne(id) {

@@ -6,7 +6,14 @@ class ProfessionalTypeService {
   }
 
   async list() {
-    return await this.professionalType.findAll();
+    try {
+      return await this.professionalType.findAll({
+        where: { situation: true },
+      });
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
   async getOne(id) {
