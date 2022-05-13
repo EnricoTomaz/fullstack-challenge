@@ -11,7 +11,7 @@ class ProfessionalTypeController {
   }
 
   async getOne(id) {
-    const professionalType = await this.professionalTypeService.getOne(id);
+    const professionalType = await new ProfessionalTypeService().getOne(id);
 
     if (!professionalType) {
       throw 'Usuário não encontrado!';

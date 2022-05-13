@@ -17,13 +17,16 @@ class ProfessionalTypeService {
   }
 
   async getOne(id) {
-    const professionalType = await this.professionalType.findByPk(id);
-
-    if (!professionalType) {
-      throw 'Tipo de Profissional não encontrado!';
+    try {
+      const professionalType = await this.professionalType.findByPk(id);
+      if (!professionalType) {
+        throw 'Tipo de Profissional não encontrado!';
+      }
+      return professionalType;
+    } catch (error) {
+      console.log(error);
+      return error;
     }
-
-    return professionalType;
   }
 
   async create(data) {
@@ -41,4 +44,4 @@ class ProfessionalTypeService {
   }
 }
 
-export default new ProfessionalTypeService();
+export default ProfessionalTypeService;

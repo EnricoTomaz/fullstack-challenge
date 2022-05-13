@@ -53,11 +53,11 @@ paths:
   /professional_type:
     get:
       tags:
-        - Professionals type
-      description: Fetch all examples
+        - Professional types
+      description: Fetch all professional types
       responses:
         200:
-          description: Returns all examples
+          description: Returns all professional types
     post:
       tags:
         - Professionals
