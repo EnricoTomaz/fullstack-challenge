@@ -9,7 +9,7 @@ export default class ProfessionalService {
 
   async list() {
     try {
-      return await this.professional.findAll();
+      return await this.professional.findAll({ where: { situation: true } });
     } catch (error) {
       console.log(error);
       return error;
@@ -18,7 +18,7 @@ export default class ProfessionalService {
 
   async getOne(id) {
     try {
-      return this.professional.findByPk(id);
+      return this.professional.findOne({ where: { id, situation: true } });
     } catch (error) {
       console.log(error);
       return error;
@@ -26,12 +26,35 @@ export default class ProfessionalService {
   }
 
   async create(data) {
-    return this.professional.create(data);
+    try {
+      return this.professional.create(data);
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
-  async update(data) {
-    return data;
+
+  async update(body, id) {
+    try {
+      await this.professional.update(body, {
+        where: { id },
+        returning: true,
+        plain: true,
+      });
+      return this.professional.findByPk(id);
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
-  async delete(data) {
-    return data;
+
+  async delete(id) {
+    try {
+      await this.professional.update({ situation: false }, { where: { id } });
+      return;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }

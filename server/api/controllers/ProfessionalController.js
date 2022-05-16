@@ -13,7 +13,7 @@ class ProfessionalController {
     const professional = await new ProfessionalService().getOne(id);
 
     if (!professional) {
-      throw 'Usuário não encontrado!';
+      return res.json('Usuário não encontrado!');
     }
 
     return res.json(professional);
@@ -31,14 +31,15 @@ class ProfessionalController {
   }
   async update(req, res) {
     const body = req.body;
-    const data = await new ProfessionalService().update(body);
+    const id = req.params.id;
+    const data = await new ProfessionalService().update(body, id);
 
     return res.json(data);
   }
 
-  async delete(id) {
-    await this.professionalService.delete(id);
-    return;
+  async delete(req, res) {
+    await new ProfessionalService().delete(req.params.id);
+    return res.json();
   }
 }
 
