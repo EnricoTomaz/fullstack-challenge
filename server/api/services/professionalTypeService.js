@@ -18,7 +18,9 @@ class ProfessionalTypeService {
 
   async getOne(id) {
     try {
-      const professionalType = await this.professionalType.findByPk(id);
+      const professionalType = await this.professionalType.findOne({
+        where: { id, situation: true },
+      });
       if (!professionalType) {
         throw 'Tipo de Profissional não encontrado!';
       }

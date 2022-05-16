@@ -10,14 +10,15 @@ class ProfessionalTypeController {
     return res.json(data);
   }
 
-  async getOne(id) {
+  async getOne(req, res) {
+    const id = req.params.id;
     const professionalType = await new ProfessionalTypeService().getOne(id);
 
     if (!professionalType) {
       throw 'Usuário não encontrado!';
     }
 
-    return professionalType;
+    return res.json(professionalType);
   }
 
   async create(data) {
