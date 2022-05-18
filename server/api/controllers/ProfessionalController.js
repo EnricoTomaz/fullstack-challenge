@@ -29,6 +29,7 @@ class ProfessionalController {
       return res.json(error);
     }
   }
+
   async update(req, res) {
     const body = req.body;
     const id = req.params.id;
