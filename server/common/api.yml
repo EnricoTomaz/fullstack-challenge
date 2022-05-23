@@ -9,6 +9,7 @@ tags:
     description: Simple professional endpoints
   - name: Specification
     description: The swagger API specification
+  - name: Professional type
 
 consumes:
   - application/json
@@ -19,6 +20,15 @@ definitions:
   ExampleBody:
     type: object
     title: professional
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        example: no_stress
+  NewExampleBody:
+    type: object
+    title: profesional type
     required:
       - name
     properties:
@@ -60,18 +70,19 @@ paths:
           description: Returns all professional types
     post:
       tags:
-        - Professionals
-      description: Create a new professional
+        - Professional types
+      description: Create a new professional type
       parameters:
-        - name: professional
+        - name: Professional
           in: body
-          description: an professional
+          description: Professional Type that we want to create
           required: true
           schema:
-            $ref: '#/definitions/ExampleBody'
+            # $ref: '#/definitions/NewExampleBody'
+            type: object
       responses:
         200:
-          description: Returns all examples
+          description: Returns all created professional types
 
   /{id}:
     get:
@@ -140,18 +151,19 @@ paths:
           description: Example not found
     put:
       tags:
-        - Professionals
+        - Professionals type
       parameters:
-        - name: professional
+        - name: professional type
           in: body
-          description: an professional
+          description: an professional type
           required: true
           schema:
-            $ref: '#/definitions/ExampleBody'
+            # $ref: '#/definitions/ExampleBody'
+            type: object
         - name: id
           in: path
           required: true
-          description: The id of the professional to retrieve
+          description: updates de the professional type
           type: integer
       responses:
         200:
@@ -160,12 +172,12 @@ paths:
           description: Example not found
     delete:
       tags:
-        - Professionals
+        - Professionals type
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the professional to retrieve
+          description: The id of the professional type to retrieve
           type: integer
       responses:
         200:

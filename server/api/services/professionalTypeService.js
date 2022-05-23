@@ -18,7 +18,9 @@ class ProfessionalTypeService {
 
   async getOne(id) {
     try {
-      const professionalType = await this.professionalType.findByPk(id);
+      const professionalType = await this.professionalType.findOne({
+        where: { id, situation: true },
+      });
       if (!professionalType) {
         throw 'Tipo de Profissional não encontrado!';
       }
@@ -30,17 +32,48 @@ class ProfessionalTypeService {
   }
 
   async create(data) {
-    return await this.professionalType.create(data);
+    try {
+      return /* await */ this.professionalType.create(data);
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
-  async update(id, data) {
+  /* async update(id, data) {
     await this.getOne(id);
     return await this.professionalType.update(data, { where: { id } });
+  } */
+
+  async update(body, id) {
+    try {
+      await this.professionalType.update(body, {
+        where: { id },
+        returning: true,
+        plain: true,
+      });
+      return this.professionalType.findByPk(id);
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
-  async delete(id) {
+  /* async delete(id) {
     await this.getOne(id);
     return await this.professionalType.destroy({ where: { id } });
+  } */
+  async delete(id) {
+    try {
+      await this.professionalType.update(
+        { situation: false },
+        { where: { id } }
+      );
+      return;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }
 
