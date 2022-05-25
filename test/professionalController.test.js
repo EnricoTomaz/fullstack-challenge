@@ -1,6 +1,6 @@
 import { valideProfessional } from './util';
 import ProfessionalController from '../server/api/controllers/ProfessionalController';
-
+/*eslint-disable */
 const mockProfessional = {
   list: jest.fn(() => []),
   getOne: jest.fn((id) => valideProfessional()),
@@ -70,3 +70,4 @@ describe('Professional tests', () => {
     expect(mockProfessional.delete).toHaveBeenCalledTimes(1);
   });
 });
+/*eslint-enable */
