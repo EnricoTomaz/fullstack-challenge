@@ -15,7 +15,8 @@
     "test:debug": "mocha --require @babel/register --inspect-brk --exit",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "heroku-postbuild": "npm run compile"
+    "heroku-postbuild": "npm run compile",
+    "unit": "jest --coverage"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
