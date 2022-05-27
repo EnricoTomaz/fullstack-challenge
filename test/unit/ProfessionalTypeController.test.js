@@ -1,5 +1,5 @@
 import { valideProfessionalType } from './util';
-import ProfessionalTypeController from '../server/api/controllers/ProfessionalTypeController';
+import ProfessionalTypeController from '../../server/api/controllers/ProfessionalTypeController';
 /*eslint-disable */
 const mockProfessionalType = {
   list: jest.fn(() => []),
@@ -11,13 +11,13 @@ const mockProfessionalType = {
   delete: jest.fn((id) => true),
 };
 
-jest.mock('../server/api/controllers/ProfessionalTypeController', () => {
+jest.mock('../../server/api/controllers/ProfessionalTypeController', () => {
   return jest.fn().mockImplementation(() => {
     return mockProfessionalType;
   });
 });
 
-jest.mock('../server/api/controllers/ProfessionalTypeController');
+jest.mock('../../server/api/controllers/ProfessionalTypeController');
 
 beforeEach(() => {
   ProfessionalTypeController.mockClear();
