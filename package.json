@@ -11,11 +11,12 @@
     "compile": "babel server --out-dir dist --delete-dir-on-start --source-maps inline --copy-files",
     "dev": "nodemon server --exec babel-node --config .nodemonrc.json | pino-pretty",
     "dev:debug": "nodemon server --exec babel-node --config .nodemonrc.json --inspect | pino-pretty",
-    "test": "mocha --require @babel/register --exit",
+    "test": "mocha --require @babel/register --exit ./test/integration",
     "test:debug": "mocha --require @babel/register --inspect-brk --exit",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "heroku-postbuild": "npm run compile"
+    "heroku-postbuild": "npm run compile",
+    "unit": "jest --coverage"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
