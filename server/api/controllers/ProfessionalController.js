@@ -24,7 +24,7 @@ class ProfessionalController {
     try {
       const body = req.body;
       const data = await new ProfessionalService().create(body);
-      return res.json(data);
+      return res.status(201).json(data);
     } catch (error) {
       return res.json(error);
     }
